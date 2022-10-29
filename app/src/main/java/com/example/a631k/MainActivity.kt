@@ -49,9 +49,16 @@ class MainActivity:  AppCompatActivity() {
             ) { p0, p1 ->
 
                 val title = etEmail.text.toString()
-                val user = Note(0, title,  "${Date().hours} ${Date().minutes}")
-                mUserViewModel.addUser(user)
-                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+
+                if (title.trim().length > 0){
+
+                    val user = Note(0, title,  "${Date().hours} ${Date().minutes}")
+                    mUserViewModel.addUser(user)
+                    Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+
+                }else{
+                    Toast.makeText(this, "Please enter some message! ", Toast.LENGTH_SHORT).show()
+                }
 
             }
             dialogBuilder.setNegativeButton(
